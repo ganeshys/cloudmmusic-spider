@@ -8,13 +8,13 @@ from pprint import pprint
 
 
 def format_content(content):
-    content = content.replace(u'\xa0', u' ')
-    content = re.sub(r'\[.*?\]', '', content)
-    content = re.sub(r'\s*作曲.*\n', '', content)
-    content = re.sub(r'\s*作词.*\n', '', content)
-    content = re.sub(r'.*:', '', content)
-    content = re.sub(r'.*：', '', content)
-    content = content.replace('\n', ' ')
+    # content = content.replace(u'\xa0', u' ')
+    # content = re.sub(r'\[.*?\]', '', content)
+    # content = re.sub(r'\s*作曲.*\n', '', content)
+    # content = re.sub(r'\s*作词.*\n', '', content)
+    # content = re.sub(r'.*:', '', content)
+    # content = re.sub(r'.*：', '', content)
+    # content = content.replace('\n', ' ')
     return content
 
 
@@ -70,18 +70,17 @@ def main():
     with open('lyric1.json', 'rb') as f:
         data = json.load(f)
 
-    # 停用词表来自：
-    # https://github.com/XuJin1992/ChineseTextClassifier
     with open('stop_words.txt', encoding='UTF-8') as f:
         stop_words = f.read().split('\n')
 
-    lyric = data[0]
+    lyric = str(data)
+
     lyric = format_content(lyric)
 
+    print(lyric)
+
     seg_list = word_segmentation(lyric, stop_words)
-
     counter = word_frequency(seg_list, 10)
-
     plot_chart(counter)
 
 

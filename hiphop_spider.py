@@ -106,10 +106,11 @@ class Hiphop_spider(object):
 if __name__ == '__main__':
     spider = Hiphop_spider()
     test = spider.get_song_lyric(813277600)
+    # test:2382462448   hiphop:813277600
     # test = spider.get_artists_songlist(950575570)
     # test = spider.get_artists_songlist(727360991)
-    with open('lyric1.json', 'w') as f:
-        json.dump(test, f)
+    with open('lyric1.json', 'w', encoding='utf-8') as f:
+        json.dump(test, f, ensure_ascii=False)
     # with open('lyric1.json', 'w', encoding='utf-8') as f:
     #     json.dump(test, f, ensure_ascii=False)
     print('Done')
