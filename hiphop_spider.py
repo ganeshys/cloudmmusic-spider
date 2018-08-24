@@ -42,7 +42,7 @@ class Hiphop_spider(object):
                 artists_detail.append(artist_detail)
             song['artists'] = artists_detail
             songlist.append(song)
-        print(songlist)
+        # print(songlist)
         return songlist
 
     def get_artists_songlist(self, playlist_id):
@@ -54,10 +54,16 @@ class Hiphop_spider(object):
             singerlist = song['artists']
             for singer in singerlist:
                 singerid.append(singer['id'])
-            print(singerid)
+            # print(singerid)
         # 删除列表中重复的元素
         singerid_norepeat = list(set(singerid))
         singerid_norepeat.remove(0)
+        singerid_norepeat.remove(12118273)
+        singerid_norepeat.remove(12139451)
+        singerid_norepeat.remove(1049545)
+        singerid_norepeat.remove(12295180)
+        singerid_norepeat.remove(12119335)
+        singerid_norepeat.remove(1949)
         # 拿到歌单中各个艺人的id
         print(singerid_norepeat)
         # 拼接url
